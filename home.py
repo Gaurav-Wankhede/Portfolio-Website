@@ -3,12 +3,16 @@ import streamlit as st
 from streamlit_option_menu import option_menu
 import base64
 from streamlit_lottie import st_lottie
+import streamlit.components.v1 as components
 import os
 
 # Path to your resume
 resume_path = "assets/resume.pdf"
 
 st.set_page_config(layout='wide')
+
+
+@st.cache_data
 def render_svg(svg_path, width=16, height=16):
     with open(svg_path, 'rb') as f:
         svg_bytes = f.read()
@@ -16,6 +20,8 @@ def render_svg(svg_path, width=16, height=16):
     html = f'<img src="data:image/svg+xml;base64,{b64}" width="{width}" height="{height}"/>'
     return html
 
+
+@st.cache_data
 def render_gif(gif_path, width=16, height=16):
     with open(gif_path, 'rb') as f:
         gif_bytes = f.read()
@@ -23,6 +29,8 @@ def render_gif(gif_path, width=16, height=16):
     html = f'<img src="data:image/gif;base64,{b64}" width="{width}" height="{height}"/>'
     return html
 
+
+@st.cache_data
 def render_png(png_path, width=50, height=50):
     with open(png_path, 'rb') as f:
         png_bytes = f.read()
@@ -35,12 +43,15 @@ def render_png(png_path, width=50, height=50):
     return html
 
 
+@st.cache_data
 def load_lottie_url(url):
     r = requests.get(url)
     if r.status_code != 200:
         return None
     return r.json()
 
+
+@st.cache_data
 def load_lottie_file(file_path):
     with open(file_path, 'rb') as file:
         lottie_bytes = file.read()
@@ -49,7 +60,6 @@ def load_lottie_file(file_path):
 
 
 def home():
-
     # CSS styles file
     with open("styles/main.css") as f:
         st.write(f"<style>{f.read()}</style>", unsafe_allow_html=True)
@@ -91,7 +101,6 @@ def home():
     github_gif_url = "assets/github.gif"
     instagram_gif_url = "assets/instagram.gif"
 
-
     # Use the render_gif function to get the HTML for the GIFs
     linkedin_gif_html = render_gif(linkedin_gif_url, width=50, height=50)
     github_gif_html = render_gif(github_gif_url, width=50, height=50)
@@ -118,8 +127,6 @@ def home():
     st.markdown("---")
     # Load the Lottie animation
     lottie_coder = load_lottie_url("https://lottie.host/ed492b45-0e8d-4e3f-b1d7-fbdfbb08a6a2/9zEnjfQVEe.json")
-
-
 
     with st.container():
         selected = option_menu(
@@ -207,8 +214,6 @@ def home():
             unsafe_allow_html=True
         )
 
-
-
         with open("assets/resume.pdf", "rb") as pdf_file:
             st.download_button(
                 label="Download my Resume",
@@ -216,18 +221,6 @@ def home():
                 file_name="resume.pdf",
                 mime="application/octet-stream"
             )
-
-        # Path to your resume
-        resume_path = "assets/resume.pdf"
-
-        # Create a link to the PDF file
-        pdf_file = f"data:application/pdf;base64,{base64.b64encode(open(resume_path, 'rb').read()).decode()}"
-
-        # Create an iframe that embeds the PDF
-        iframe = f'<iframe src="{pdf_file}" width="100%" height="800px"></iframe>'
-
-        # Display the iframe
-        st.markdown(iframe, unsafe_allow_html=True)
 
 
     elif selected == "Project":
@@ -252,8 +245,8 @@ def home():
             with head_middle:
                 st.write("")
             with head_right:
-                st.markdown("<h5 style='text-align: left; padding-top: 20px;'> October 2022 </h5>", unsafe_allow_html=True)
-
+                st.markdown("<h5 style='text-align: left; padding-top: 20px;'> October 2022 </h5>",
+                            unsafe_allow_html=True)
 
             # Create three columns inside the container
             left_col, middle_col, right_col = st.columns([1, 2, 2])
@@ -268,8 +261,9 @@ def home():
 - Image Training: Educated the system on 500-600 images of accidents, achieving zero false positives during training.
 - Safety Measures: Fortified safety measures, encouraging to a 20% reduction in emergency response time.
                         """)
-                st.markdown("<h5><a href='https://github.com/Gaurav-Wankhede/Accident-Detection_And_Alerting_System.git'>Repo</a></h5>",
-                            unsafe_allow_html=True)
+                st.markdown(
+                    "<h5><a href='https://github.com/Gaurav-Wankhede/Accident-Detection_And_Alerting_System.git'>Repo</a></h5>",
+                    unsafe_allow_html=True)
 
             with right_col:
                 # Time Frame
@@ -288,15 +282,16 @@ def home():
 
         # Create a container
         with st.container():
-            head_left,head_middle, head_right = st.columns([2, 1, 1])
+            head_left, head_middle, head_right = st.columns([2, 1, 1])
             # Add the common header inside the container
             with head_left:
-                st.markdown("<h3 style='text-align: left; background-color: rgba(218,165,32,0.1); border: 2px solid Goldenrod; border-radius: 10px; padding: 10px;'> Face Mask Detection</h3>", unsafe_allow_html=True)
+                st.markdown(
+                    "<h3 style='text-align: left; background-color: rgba(218,165,32,0.1); border: 2px solid Goldenrod; border-radius: 10px; padding: 10px;'> Face Mask Detection</h3>",
+                    unsafe_allow_html=True)
             with head_middle:
                 st.write("")
             with head_right:
                 st.markdown("<h3 style='text-align: left;'> March 2022 </h3>", unsafe_allow_html=True)
-
 
             # Create three columns inside the container
             left_col, middle_col, right_col = st.columns([1, 2, 2])
@@ -316,7 +311,7 @@ def home():
 
             with right_col:
                 # Time Frame
-                  # Replace with the actual start and end months and years
+                # Replace with the actual start and end months and years
 
                 # Skills Used
                 st.subheader("Skills Used")
@@ -329,6 +324,13 @@ def home():
                 <div class="skill-button">Streamlit Web App Development</div>
                 """, unsafe_allow_html=True)
 
+            # Create a container
+            with st.container():
+                st.markdown("""
+                    <h3 style='text-align: left; background-color: rgba(218,165,32,0.1); border: 2px solid Goldenrod; border-radius: 10px; padding: 10px;'> 
+                    Coming soon......
+                    </h3>
+                    """, unsafe_allow_html=True)
 
     elif selected == "About":
         # About me section
@@ -348,14 +350,19 @@ def home():
         
         - 🏂 Also practicing Cooking, Video Games and Designing 🧗
         
-        - 🏠 Boisar
+        - 🏠 Boisar, Palghar, Maharashtra, 🧡🤍💚️India 
     """)
 
 
     elif selected == "Contact":
         st.write("# Contact")
-        st.write("## Contact Streamlit")
-        st.write("### Streamlit is a web app development library for Python.")
+        # Create a container
+        with st.container():
+            st.markdown("""
+                            <h3 style='text-align: left; background-color: rgba(218,165,32,0.1); border: 2px solid Goldenrod; border-radius: 10px; padding: 10px;'> 
+                            Coming soon......
+                            </h3>
+                            """, unsafe_allow_html=True)
 
     # Define the HTML code for the footer
     footer_html = """
