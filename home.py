@@ -130,6 +130,14 @@ def home():
     st.markdown("---")
     # Load the Lottie animation
     lottie_coder = load_lottie_url("https://lottie.host/ed492b45-0e8d-4e3f-b1d7-fbdfbb08a6a2/9zEnjfQVEe.json")
+    face_mask = load_lottie_url("https://lottie.host/00b300d9-76c1-4e30-a00c-11013a6b6be1/Q2S93NdQUM.json")
+    accident = load_lottie_url("https://lottie.host/7c7bb3fb-493a-4d5f-8730-23739d4116db/oVMr5pU61s.json")
+    web_scrapping = load_lottie_url("https://lottie.host/02cc2c85-f4f8-40b1-accf-312e7dc131f9/9qKOLO0Nd8.json")
+    analysis = load_lottie_url("https://lottie.host/7ad00812-5657-450f-85a1-6172ee647244/dlW8yNGNot.json")
+    attendance = load_lottie_url("https://lottie.host/4a1e9f9e-1bc4-41e6-bec7-16985456371b/HvuY54WYnk.json")
+    bot = load_lottie_url("https://lottie.host/db0b89ed-4ffa-42bf-bb4e-4a8947dec02b/mloKEKtTNN.json")
+    weather = load_lottie_url("https://lottie.host/2e5e71a0-634a-4bf1-9cb8-25e40855f6c9/hSMVjoAOGd.json")
+    amazon = load_lottie_url("https://lottie.host/f0082e89-fbc9-4d28-a805-014db29c13e1/Uahtp5ml6F.json")
 
     with st.container():
         selected = option_menu(
@@ -242,6 +250,7 @@ def home():
                         <h3 style='text-align: left; background-color: rgba(218,165,32,0.1); border: 2px solid Goldenrod; border-radius: 10px; padding: 10px;'> 
                         Heroic AI
                         </h3>
+                        <h4>Self Project</h4>
                         """, unsafe_allow_html=True)
 
             with head_middle:
@@ -254,7 +263,7 @@ def home():
             left_col, middle_col, right_col = st.columns([1, 2, 2])
 
             with left_col:
-                st_lottie(lottie_coder, height='100%', width='100%', key="coder5")
+                st_lottie(bot, height='100%', width='100%', key="coder6")
             with middle_col:
                 # Achievements
                 st.markdown("<h3>Summary</h3>", unsafe_allow_html=True)
@@ -265,7 +274,7 @@ def home():
                             """
                             )
                 st.markdown(
-                    """<h5><a href='https://github.com/Gaurav-Wankhede/Heroic-AI.git'>Repo</a>
+                    """<h5><a href='https://github.com/Gaurav-Wankhede/Heroic-AI.git'>GitHub</a>
                     |
                     <a href="https://heroic-ai.onrender.com">Website</a>
                     </h5>
@@ -295,8 +304,9 @@ def home():
             with head_left:
                 st.markdown("""
                         <h3 style='text-align: left; background-color: rgba(218,165,32,0.1); border: 2px solid Goldenrod; border-radius: 10px; padding: 10px;'> 
-                        Weather Data Analysis
+                        Smart Attendance System
                         </h3>
+                        <h4>Self Project</h4>
                         """, unsafe_allow_html=True)
 
             with head_middle:
@@ -309,7 +319,68 @@ def home():
             left_col, middle_col, right_col = st.columns([1, 2, 2])
 
             with left_col:
-                st_lottie(lottie_coder, height='100%', width='100%', key="coder4")
+                st_lottie(attendance, height='100%', width='100%', key="coder5")
+            with middle_col:
+                # Achievements
+                st.markdown("<h3>Summary</h3>", unsafe_allow_html=True)
+                st.markdown("""
+                        - 	Smart Attendance System
+                            """
+                            )
+                st.markdown(
+                    """<h5><a href='https://github.com/Gaurav-Wankhede/Weather-Analysis.git'>GitHub</a>
+                    |
+                    <a href="https://app.powerbi.com/groups/3eb1e7fb-b5b4-495d-8aad-8e79b57424a7/reports/f111e4b9-6aea-41a0-9d37-309db01cf381/ReportSection2ba2795d61b5728b3624?experience=power-bi">Dashboard</a>
+                    </h5>
+
+
+                    """,
+                    unsafe_allow_html=True)
+
+            with right_col:
+                # Time Frame
+                # Replace with the actual start and end months and years
+
+                # Skills Used
+                st.subheader("Skills Used")
+                # Skills Used
+                st.markdown("""
+                                <div class="skill-button">Python</div>
+                                <div class="skill-button">Streamlit</div>
+                                <div class="skill-button">Open CV</div>
+                                <div class="skill-button">Face_Recognition</div>
+                                <div class="skill-button">MatplotLib</div>
+                                <div class="skill-button">Plotly</div>
+                                <div class="skill-button">Numpy</div>
+                                <div class="skill-button">Pandas</div>
+                                <div class="skill-button">Pillow</div>
+                                <div class="skill-button">Sklearn</div>
+                                <div class="skill-button">Tensorflow</div>
+                                <div class="skill-button">Keras</div>
+                                """, unsafe_allow_html=True)
+
+        with st.container():
+            head_left, head_middle, head_right = st.columns([2, 1, 1])
+            # Add the common header inside the container
+            with head_left:
+                st.markdown("""
+                        <h3 style='text-align: left; background-color: rgba(218,165,32,0.1); border: 2px solid Goldenrod; border-radius: 10px; padding: 10px;'> 
+                        Weather Data Analysis
+                        </h3>
+                        <h4>Project by <a href="https://course.acciojob.com/start-project?project=77f96d6b-7920-47a4-8eaf-1f4fcfa8b75d">AccioJobs</a></h4>
+                        """, unsafe_allow_html=True)
+
+            with head_middle:
+                st.write("")
+            with head_right:
+                st.markdown("<h5 style='text-align: left; padding-top: 20px;'> April 2024 </h5>",
+                            unsafe_allow_html=True)
+
+            # Create three columns inside the container
+            left_col, middle_col, right_col = st.columns([1, 2, 2])
+
+            with left_col:
+                st_lottie(weather, height='100%', width='100%', key="coder4")
             with middle_col:
                 # Achievements
                 st.markdown("<h3>Summary</h3>", unsafe_allow_html=True)
@@ -320,7 +391,7 @@ def home():
                             """
                             )
                 st.markdown(
-                    """<h5><a href='https://github.com/Gaurav-Wankhede/Weather-Analysis.git'>Repo</a>
+                    """<h5><a href='https://github.com/Gaurav-Wankhede/Weather-Analysis.git'>GitHub</a>
                     |
                     <a href="https://app.powerbi.com/groups/3eb1e7fb-b5b4-495d-8aad-8e79b57424a7/reports/f111e4b9-6aea-41a0-9d37-309db01cf381/ReportSection2ba2795d61b5728b3624?experience=power-bi">Dashboard</a>
                     </h5>
@@ -351,6 +422,7 @@ def home():
                         <h3 style='text-align: left; background-color: rgba(218,165,32,0.1); border: 2px solid Goldenrod; border-radius: 10px; padding: 10px;'> 
                         Performance Monitor Automation
                         </h3>
+                        <h4>Self Project</h4>
                         """, unsafe_allow_html=True)
 
             with head_middle:
@@ -374,7 +446,7 @@ def home():
                             """
                             )
                 st.markdown(
-                    "<h5><a href='https://github.com/Gaurav-Wankhede/Performance-Monitor-Automation.git'>Repo</a></h5>",
+                    "<h5><a href='https://github.com/Gaurav-Wankhede/Performance-Monitor-Automation.git'>GitHub</a></h5>",
                     unsafe_allow_html=True)
 
             with right_col:
@@ -399,6 +471,7 @@ def home():
                         <h3 style='text-align: left; background-color: rgba(218,165,32,0.1); border: 2px solid Goldenrod; border-radius: 10px; padding: 10px;'> 
                         Amazon Web Scrapping 
                         </h3>
+                        <h4>Self Project</h4>
                         """, unsafe_allow_html=True)
 
             with head_middle:
@@ -411,7 +484,7 @@ def home():
             left_col, middle_col, right_col = st.columns([1, 2, 2])
 
             with left_col:
-                st_lottie(lottie_coder, height='100%', width='100%', key="coder2")
+                st_lottie(amazon, height='100%', width='100%', key="coder2")
             with middle_col:
                 # Achievements
                 st.markdown("<h3>Summary</h3>", unsafe_allow_html=True)
@@ -422,7 +495,7 @@ def home():
                                 """
                             )
                 st.markdown(
-                    "<h5><a href='https://github.com/Gaurav-Wankhede/Amazon-Web-Scrapping.git'>Repo</a></h5>",
+                    "<h5><a href='https://github.com/Gaurav-Wankhede/Amazon-Web-Scrapping.git'>GitHub</a></h5>",
                     unsafe_allow_html=True)
 
             with right_col:
@@ -449,6 +522,7 @@ def home():
                 <h3 style='text-align: left; background-color: rgba(218,165,32,0.1); border: 2px solid Goldenrod; border-radius: 10px; padding: 10px;'> 
                 Accident Detection System with twilio 
                 </h3>
+                <h4>Third Year Engineering Mini-Project</h4>
                 """, unsafe_allow_html=True)
 
             with head_middle:
@@ -461,7 +535,7 @@ def home():
             left_col, middle_col, right_col = st.columns([1, 2, 2])
 
             with left_col:
-                st_lottie(lottie_coder, height='100%', width='100%', key="coder1")
+                st_lottie(accident, height='100%', width='100%', key="coder1")
             with middle_col:
                 # Achievements
                 st.markdown("<h3>Summary</h3>", unsafe_allow_html=True)
@@ -471,7 +545,7 @@ def home():
                         - **Safety Measures:** Fortified safety measures, encouraging to a **20%** reduction in emergency response time.
                         """)
                 st.markdown(
-                    """<h5><a href='https://github.com/Gaurav-Wankhede/Accident-Detection_And_Alerting_System.git'>Repo</a>
+                    """<h5><a href='https://github.com/Gaurav-Wankhede/Accident-Detection_And_Alerting_System.git'>GitHub</a>
                     |
                     <a href='https://github.com/Gaurav-Wankhede/Project-Report/blob/main/Accident.pdf'>Report</a>
                     </h5>
@@ -502,7 +576,7 @@ def home():
                     """<h3 style='text-align: left; background-color: rgba(218,165,32,0.1); border: 2px solid Goldenrod; border-radius: 10px; padding: 10px;'> 
                     Face Mask Detection
                     </h3>
-                    <h4>Thirt Year Engineering Mini-Project</h4>
+                    <h4>Third Year Engineering Mini-Project</h4>
                     
                     """
                     ,
@@ -516,7 +590,7 @@ def home():
             left_col, middle_col, right_col = st.columns([1, 2, 2])
 
             with left_col:
-                st_lottie(lottie_coder, height='100%', width='100%', key="coder")
+                st_lottie(face_mask, height='100%', width='100%', key="coder")
             with middle_col:
                 # Achievements
                 st.subheader("Summary")
@@ -525,7 +599,7 @@ def home():
                 - **Precision and Productivity**: Educated the system using **3833 images** to pinpoint correct mask-wearing, boosting precision by **15%** and productivity by **25%**.
                 - **Algorithm Fine-Tuning**: Accomplished a **15% boost** in face mask detection accuracy by fine-tuning existing algorithms and integrating real-time feedback mechanisms.
                 """)
-                st.markdown("""<h5><a href='https://github.com/Gaurav-Wankhede/Face-Mask_Detection.git'>Repo</a> 
+                st.markdown("""<h5><a href='https://github.com/Gaurav-Wankhede/Face-Mask_Detection.git'>GitHub</a> 
                 | 
                 <a href="https://github.com/Gaurav-Wankhede/Project-Report/blob/main/Facemask.pdf">Report</h5>
                             
