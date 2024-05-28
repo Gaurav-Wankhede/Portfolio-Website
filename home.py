@@ -4,8 +4,6 @@ from streamlit_option_menu import option_menu
 import base64
 from streamlit_lottie import st_lottie
 import streamlit.components.v1 as components
-from streamlit_gsheets import GSheetsConnection
-import pandas as pd
 import os
 
 # Path to your resume
@@ -233,6 +231,106 @@ def home():
             unsafe_allow_html=True
         )
 
+        with st.container():
+            head_left, head_middle, head_right = st.columns([2, 1, 1])
+            # Add the common header inside the container
+            with head_left:
+                st.markdown("""
+                        <h3 style='text-align: left; background-color: rgba(218,165,32,0.1); border: 2px solid Goldenrod; border-radius: 10px; padding: 10px;'> 
+                        Weather Data Analysis
+                        </h3>
+                        """, unsafe_allow_html=True)
+
+            with head_middle:
+                st.write("")
+            with head_right:
+                st.markdown("<h5 style='text-align: left; padding-top: 20px;'> March 2024 </h5>",
+                            unsafe_allow_html=True)
+
+            # Create three columns inside the container
+            left_col, middle_col, right_col = st.columns([1, 2, 2])
+
+            with left_col:
+                st_lottie(lottie_coder, height='100%', width='100%', key="coder4")
+            with middle_col:
+                # Achievements
+                st.markdown("<h3>Summary</h3>", unsafe_allow_html=True)
+                st.markdown("""
+                        - 	**Power BI Dashboard:** Constructed a Power BI dashboard, augmenting decision-making efficiency by **30%**.
+                        -	**Decision-Making:** Enabled informed decision-making, giving rise to **20%** improvement in resource allocation.
+                        -	**Conclusion Efficacy:** Built a Power BI dashboard, boosting conclusion efficacy by **30%**.
+                            """
+                            )
+                st.markdown(
+                    """<h5><a href='https://github.com/Gaurav-Wankhede/Weather-Analysis.git'>Repo</a>
+                    |
+                    <a href="https://app.powerbi.com/groups/3eb1e7fb-b5b4-495d-8aad-8e79b57424a7/reports/f111e4b9-6aea-41a0-9d37-309db01cf381/ReportSection2ba2795d61b5728b3624?experience=power-bi">Dashboard</a>
+                    </h5>
+                    
+                    
+                    """,
+                    unsafe_allow_html=True)
+
+            with right_col:
+                # Time Frame
+                # Replace with the actual start and end months and years
+
+                # Skills Used
+                st.subheader("Skills Used")
+                # Skills Used
+                st.markdown("""
+                                <div class="skill-button">Python Programming</div>
+                                <div class="skill-button">Power BI</div>
+                                <div class="skill-button">MS SQL Server Management Studio</div>
+                                """, unsafe_allow_html=True)
+
+        with st.container():
+            head_left, head_middle, head_right = st.columns([2, 1, 1])
+            # Add the common header inside the container
+            with head_left:
+                st.markdown("""
+                        <h3 style='text-align: left; background-color: rgba(218,165,32,0.1); border: 2px solid Goldenrod; border-radius: 10px; padding: 10px;'> 
+                        Performance Monitor Automation
+                        </h3>
+                        """, unsafe_allow_html=True)
+
+            with head_middle:
+                st.write("")
+            with head_right:
+                st.markdown("<h5 style='text-align: left; padding-top: 20px;'> March 2024 </h5>",
+                            unsafe_allow_html=True)
+
+            # Create three columns inside the container
+            left_col, middle_col, right_col = st.columns([1, 2, 2])
+
+            with left_col:
+                st_lottie(lottie_coder, height='100%', width='100%', key="coder3")
+            with middle_col:
+                # Achievements
+                st.markdown("<h3>Summary</h3>", unsafe_allow_html=True)
+                st.markdown("""
+                        - **Fetched:** Fetched system data using Python
+                        - **Stored:** Stored data in a SSMS database
+                        - **Visualized:** Visualized Realtime data using PowerBI
+                            """
+                            )
+                st.markdown(
+                    "<h5><a href='https://github.com/Gaurav-Wankhede/Performance-Monitor-Automation.git'>Repo</a></h5>",
+                    unsafe_allow_html=True)
+
+            with right_col:
+                # Time Frame
+                # Replace with the actual start and end months and years
+
+                # Skills Used
+                st.subheader("Skills Used")
+                # Skills Used
+                st.markdown("""
+                                <div class="skill-button">Python Programming</div>
+                                <div class="skill-button">Power BI</div>
+                                <div class="skill-button">MS SQL Server Management Studio</div>
+                                """, unsafe_allow_html=True)
+
         # Create a container
         with st.container():
             head_left, head_middle, head_right = st.columns([2, 1, 1])
@@ -314,7 +412,12 @@ def home():
                         - **Safety Measures:** Fortified safety measures, encouraging to a **20%** reduction in emergency response time.
                         """)
                 st.markdown(
-                    "<h5><a href='https://github.com/Gaurav-Wankhede/Accident-Detection_And_Alerting_System.git'>Repo</a></h5>",
+                    """<h5><a href='https://github.com/Gaurav-Wankhede/Accident-Detection_And_Alerting_System.git'>Repo</a>
+                    |
+                    <a href='https://github.com/Gaurav-Wankhede/Project-Report/blob/main/Accident.pdf'>Report</a>
+                    </h5>
+                                                                                                                                
+                    """,
                     unsafe_allow_html=True)
 
             with right_col:
@@ -337,7 +440,13 @@ def home():
             # Add the common header inside the container
             with head_left:
                 st.markdown(
-                    "<h3 style='text-align: left; background-color: rgba(218,165,32,0.1); border: 2px solid Goldenrod; border-radius: 10px; padding: 10px;'> Face Mask Detection</h3>",
+                    """<h3 style='text-align: left; background-color: rgba(218,165,32,0.1); border: 2px solid Goldenrod; border-radius: 10px; padding: 10px;'> 
+                    Face Mask Detection
+                    </h3>
+                    <h4>Thirt Year Engineering Mini-Project</h4>
+                    
+                    """
+                    ,
                     unsafe_allow_html=True)
             with head_middle:
                 st.write("")
@@ -357,7 +466,11 @@ def home():
                 - **Precision and Productivity**: Educated the system using **3833 images** to pinpoint correct mask-wearing, boosting precision by **15%** and productivity by **25%**.
                 - **Algorithm Fine-Tuning**: Accomplished a **15% boost** in face mask detection accuracy by fine-tuning existing algorithms and integrating real-time feedback mechanisms.
                 """)
-                st.markdown("<h5><a href='https://github.com/Gaurav-Wankhede/Face-Mask_Detection.git'>Repo</a></h5>",
+                st.markdown("""<h5><a href='https://github.com/Gaurav-Wankhede/Face-Mask_Detection.git'>Repo</a> 
+                | 
+                <a href="https://github.com/Gaurav-Wankhede/Project-Report/blob/main/Facemask.pdf">Report</h5>
+                            
+                            """,
                             unsafe_allow_html=True)
 
             with right_col:
