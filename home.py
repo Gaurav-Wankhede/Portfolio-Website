@@ -9,7 +9,10 @@ import os
 # Path to your resume
 resume_path = "assets/resume.pdf"
 
-st.set_page_config(layout='wide')
+st.set_page_config(layout='wide', page_title="Gaurav Wankhede", page_icon="./assets/hacker.png")
+
+
+@st.cache_data
 
 
 @st.cache_data
