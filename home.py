@@ -240,6 +240,61 @@ def home():
             with head_left:
                 st.markdown("""
                         <h3 style='text-align: left; background-color: rgba(218,165,32,0.1); border: 2px solid Goldenrod; border-radius: 10px; padding: 10px;'> 
+                        Heroic AI
+                        </h3>
+                        """, unsafe_allow_html=True)
+
+            with head_middle:
+                st.write("")
+            with head_right:
+                st.markdown("<h5 style='text-align: left; padding-top: 20px;'> May 2024 </h5>",
+                            unsafe_allow_html=True)
+
+            # Create three columns inside the container
+            left_col, middle_col, right_col = st.columns([1, 2, 2])
+
+            with left_col:
+                st_lottie(lottie_coder, height='100%', width='100%', key="coder5")
+            with middle_col:
+                # Achievements
+                st.markdown("<h3>Summary</h3>", unsafe_allow_html=True)
+                st.markdown("""
+                        - 	Developed an AI chatbot using Large Language Models
+                        - 	Used **Groq API** to use these models to generate responses
+                        -   Added **Chat with CSV** functionality using **PandasAI**
+                            """
+                            )
+                st.markdown(
+                    """<h5><a href='https://github.com/Gaurav-Wankhede/Heroic-AI.git'>Repo</a>
+                    |
+                    <a href="https://heroic-ai.onrender.com">Website</a>
+                    </h5>
+
+
+                    """,
+                    unsafe_allow_html=True)
+
+            with right_col:
+                # Time Frame
+                # Replace with the actual start and end months and years
+
+                # Skills Used
+                st.subheader("Skills Used")
+                # Skills Used
+                st.markdown("""
+                                <div class="skill-button">Python</div>
+                                <div class="skill-button">Streamlit</div>
+                                <div class="skill-button">Groq API</div>
+                                <div class="skill-button">Pandas</div>
+                                <div class="skill-button">PandasAI</div>
+                                """, unsafe_allow_html=True)
+
+        with st.container():
+            head_left, head_middle, head_right = st.columns([2, 1, 1])
+            # Add the common header inside the container
+            with head_left:
+                st.markdown("""
+                        <h3 style='text-align: left; background-color: rgba(218,165,32,0.1); border: 2px solid Goldenrod; border-radius: 10px; padding: 10px;'> 
                         Weather Data Analysis
                         </h3>
                         """, unsafe_allow_html=True)
@@ -247,7 +302,7 @@ def home():
             with head_middle:
                 st.write("")
             with head_right:
-                st.markdown("<h5 style='text-align: left; padding-top: 20px;'> March 2024 </h5>",
+                st.markdown("<h5 style='text-align: left; padding-top: 20px;'> April 2024 </h5>",
                             unsafe_allow_html=True)
 
             # Create three columns inside the container
@@ -282,9 +337,10 @@ def home():
                 st.subheader("Skills Used")
                 # Skills Used
                 st.markdown("""
-                                <div class="skill-button">Python Programming</div>
+                                <div class="skill-button">Excel</div>
                                 <div class="skill-button">Power BI</div>
-                                <div class="skill-button">MS SQL Server Management Studio</div>
+                                <div class="skill-button">My SQL</div>
+                                <div class="skill-button">MS PowerPoint</div>
                                 """, unsafe_allow_html=True)
 
         with st.container():
