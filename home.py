@@ -4,6 +4,8 @@ from streamlit_option_menu import option_menu
 import base64
 from streamlit_lottie import st_lottie
 import streamlit.components.v1 as components
+from streamlit_gsheets import GSheetsConnection
+import pandas as pd
 import os
 
 # Path to your resume
@@ -115,7 +117,7 @@ def home():
             <a href="https://github.com/Gaurav-Wankhede" target="_blank" style="margin-right: 20px;">
                 {github_gif_html}
             </a>
-            <a href="https://github.com/Gaurav-Wankhede" target="_blank">
+            <a href="https://www.instagram.com/_gaurav_wankhede_/" target="_blank">
                 {instagram_gif_html}
             </a>
         </div>
@@ -237,6 +239,56 @@ def home():
             # Add the common header inside the container
             with head_left:
                 st.markdown("""
+                        <h3 style='text-align: left; background-color: rgba(218,165,32,0.1); border: 2px solid Goldenrod; border-radius: 10px; padding: 10px;'> 
+                        Amazon Web Scrapping 
+                        </h3>
+                        """, unsafe_allow_html=True)
+
+            with head_middle:
+                st.write("")
+            with head_right:
+                st.markdown("<h5 style='text-align: left; padding-top: 20px;'> March 2024 </h5>",
+                            unsafe_allow_html=True)
+
+            # Create three columns inside the container
+            left_col, middle_col, right_col = st.columns([1, 2, 2])
+
+            with left_col:
+                st_lottie(lottie_coder, height='100%', width='100%', key="coder2")
+            with middle_col:
+                # Achievements
+                st.markdown("<h3>Summary</h3>", unsafe_allow_html=True)
+                st.markdown("""
+                        - **Search:** Searched "Laptops" on Amazon.com
+                        - **Download:** Downloaded offline pages of Amazon
+                        - **Scrape:** Scrapped data and stored it in a CSV file
+                                """
+                            )
+                st.markdown(
+                    "<h5><a href='https://github.com/Gaurav-Wankhede/Amazon-Web-Scrapping.git'>Repo</a></h5>",
+                    unsafe_allow_html=True)
+
+            with right_col:
+                # Time Frame
+                # Replace with the actual start and end months and years
+
+                # Skills Used
+                st.subheader("Skills Used")
+                # Skills Used
+                st.markdown("""
+                                <div class="skill-button">Python Programming</div>
+                                <div class="skill-button">Web Scrapping</div>
+                                <div class="skill-button">Beautiful Soup</div>
+                                <div class="skill-button">Csv</div>
+                                <div class="skill-button">HTML</div>
+                                """, unsafe_allow_html=True)
+
+        # Create a container
+        with st.container():
+            head_left, head_middle, head_right = st.columns([2, 1, 1])
+            # Add the common header inside the container
+            with head_left:
+                st.markdown("""
                 <h3 style='text-align: left; background-color: rgba(218,165,32,0.1); border: 2px solid Goldenrod; border-radius: 10px; padding: 10px;'> 
                 Accident Detection System with twilio 
                 </h3>
@@ -257,9 +309,9 @@ def home():
                 # Achievements
                 st.markdown("<h3>Summary</h3>", unsafe_allow_html=True)
                 st.markdown("""
-                        - ResNet-50 Model: Improved experiment results, boosting the training accuracy of the ResNet-50 model to 97% to detect accidents.
-- Image Training: Educated the system on 500-600 images of accidents, achieving zero false positives during training.
-- Safety Measures: Fortified safety measures, encouraging to a 20% reduction in emergency response time.
+                        - **ResNet-50 Model:** Improved experiment results, boosting the training accuracy of the **ResNet-50** model to **97%** to detect accidents.
+                        - **Image Training:** Educated the system on **500-600** images of accidents, achieving zero **false positives** during training.
+                        - **Safety Measures:** Fortified safety measures, encouraging to a **20%** reduction in emergency response time.
                         """)
                 st.markdown(
                     "<h5><a href='https://github.com/Gaurav-Wankhede/Accident-Detection_And_Alerting_System.git'>Repo</a></h5>",
@@ -274,10 +326,9 @@ def home():
                 # Skills Used
                 st.markdown("""
                         <div class="skill-button">Python Programming</div>
-                        <div class="skill-button">Deep Learning</div>
-                        <div class="skill-button">Transfer Learning</div>
-                        <div class="skill-button">Image Processing</div>
-                        <div class="skill-button">Streamlit Web App Development</div>
+                        <div class="skill-button">OpenCV</div>
+                        <div class="skill-button">ResNet-50</div>
+                        <div class="skill-button">InceptionResnetV2</div>
                         """, unsafe_allow_html=True)
 
         # Create a container
@@ -291,7 +342,7 @@ def home():
             with head_middle:
                 st.write("")
             with head_right:
-                st.markdown("<h3 style='text-align: left;'> March 2022 </h3>", unsafe_allow_html=True)
+                st.markdown("<h5 style='text-align: left; padding-top: 20px;'> March 2022 </h5>", unsafe_allow_html=True)
 
             # Create three columns inside the container
             left_col, middle_col, right_col = st.columns([1, 2, 2])
@@ -318,19 +369,23 @@ def home():
                 # Skills Used
                 st.markdown("""
                 <div class="skill-button">Python Programming</div>
-                <div class="skill-button">Deep Learning</div>
-                <div class="skill-button">Transfer Learning</div>
-                <div class="skill-button">Image Processing</div>
-                <div class="skill-button">Streamlit Web App Development</div>
+                <div class="skill-button">MobilenetV2</div>
+                <div class="skill-button">OpenCV</div>
+                <div class="skill-button">TensorFlow</div>
+                <div class="skill-button">Keras</div>
+                <div class="skill-button">Numpy</div>
+                <div class="skill-button">MatplotLib</div>
+                
                 """, unsafe_allow_html=True)
 
-            # Create a container
-            with st.container():
-                st.markdown("""
-                    <h3 style='text-align: left; background-color: rgba(218,165,32,0.1); border: 2px solid Goldenrod; border-radius: 10px; padding: 10px;'> 
-                    Coming soon......
-                    </h3>
-                    """, unsafe_allow_html=True)
+
+        # Create a container
+        with st.container():
+            st.markdown("""
+                <h3 style='text-align: left; background-color: rgba(218,165,32,0.1); border: 2px solid Goldenrod; border-radius: 10px; padding: 10px;'> 
+                Coming soon......
+                </h3>
+                """, unsafe_allow_html=True)
 
     elif selected == "About":
         # About me section
@@ -346,7 +401,7 @@ def home():
        
         - 🛩️ I have worked on several projects, including Analysis and Predictive Modeling of IPL Matches and Accident Detection System with Twilio.
         
-        - 🤖 I enjoy developing projects such as SpeedClimbing.AI (🏗️under construction) and participating at platforms like Kaggle 📈
+        - 🤖 I enjoy developing projects such as LLM (🏗️under construction) and participating at platforms like Kaggle 📈
         
         - 🏂 Also practicing Cooking, Video Games and Designing 🧗
         
@@ -355,14 +410,27 @@ def home():
 
 
     elif selected == "Contact":
-        st.write("# Contact")
-        # Create a container
-        with st.container():
-            st.markdown("""
-                            <h3 style='text-align: left; background-color: rgba(218,165,32,0.1); border: 2px solid Goldenrod; border-radius: 10px; padding: 10px;'> 
-                            Coming soon......
-                            </h3>
-                            """, unsafe_allow_html=True)
+        st.header(":mailbox: Get In Touch With Me!")
+
+        # Add a contact form
+        contact_form = """
+        <form action="https://formsubmit.co/pgywww@gmail.com" method="POST">
+             <input type="hidden" name="_captcha" value="false">
+             <input type="text" name="name" placeholder="Your name" required>
+             <input type="email" name="email" placeholder="Your email" required>
+             <textarea name="message" placeholder="Your message here"></textarea>
+             <button type="submit">Send</button>
+        </form>
+        """
+
+        st.markdown(contact_form, unsafe_allow_html=True)
+
+        # Use Local CSS File
+        def local_css(file_name):
+            with open(file_name) as f:
+                st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+
+        local_css("styles/style.css")
 
     # Define the HTML code for the footer
     footer_html = """
