@@ -61,8 +61,23 @@ def load_lottie_file(file_path):
     base64_str = base64.b64encode(lottie_bytes).decode()
     return f"data:application/json;base64,{base64_str}"
 
+# Function to count projects
+def count_projects():
+    return project_counter
+def count_self():
+    return self_project
+def count_freelance():
+    return freelance
+def other_project():
+    return other
 
 def home():
+    # Initializing a counter
+    global project_counter, self_project, freelance, other
+    self_project = 3
+    freelance = 1
+    other = 3
+    project_counter = self_project + freelance + other
     # CSS styles file
     with open("styles/main.css") as f:
         st.write(f"<style>{f.read()}</style>", unsafe_allow_html=True)
@@ -96,8 +111,10 @@ def home():
                 </div>
             </div>
         </div>
+
         """,
              unsafe_allow_html=True)
+
 
     # Load GIF URLs
     linkedin_gif_url = "assets/linkedin.gif"
@@ -121,6 +138,13 @@ def home():
             <a href="https://www.instagram.com/_gaurav_wankhede_/" target="_blank">
                 {instagram_gif_html}
             </a>
+        </div>
+        <div style="
+        display: flex; 
+        align-items: center; 
+        justify-content: center;
+        ">
+        Click me
         </div>
     """
 
@@ -170,21 +194,131 @@ def home():
     if selected == "Home":
         st.markdown(
             """
-            <h1 style='color: Goldenrod;'>W<font color="white">elcome to my Portfolio 🌟</font></h1>
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Portfolio</title>
+                <style>
+                    body {
+                        font-family: Arial;
+                        line-height: 1.6;
+                        background-color: #f4f4f4;
+                        margin: 0;
+                        padding: 20px;
+                    }
+            
+                    .content {
+                        background: transparent;
+                        padding: 20px;
+                        max-width: 800px;
+                    }
+            
+                    @keyframes blink {
+                      0% {
+                        color: transparent;
+                      }
+                      50% {
+                        color: yellow;
+                      }
+                      100% {
+                        color: transparent;
+                      }
+                    }
+                    
+                    .highlight {
+                      font-weight: bold;
+                      font-size: 2em;
+                      animation: blink 2s infinite;
+                    }
+            
+                    .first-letter {
+                        color: goldenrod; /* Default color of 'B' */
+                        Font-Size: 50px;
+                    }
+                    
+                    .text {
+                        color: white;
+                        font-weight: bold;
+                        font-family: Arial;
+                        Font-Size: 40px;
+                    }
+                    
+                </style>
+            </head>
+            <body>
+                <div class="content">
+                    <span class="highlight">
+                        <span class="first-letter">D</span>ata Science 
+                        <span class="text">&</span>
+                        <span class="first-letter">A</span>rtificial Intelligence
+                    </span> 
+                    <span class="text"><span class="first-letter">E</span>nthusiast</span>
+                </div>
+            </body>
+            </html>
+
             """,
             unsafe_allow_html=True
         )
-        st.write(
-            """
-            I'm a professional with a Bachelor of Engineering in Information Technology from Atharva College of Engineering, Mumbai, graduating with distinction and consistently achieving a CGPA of 7.93. 
 
-            Throughout my career, I've prioritized precision and attention to detail, leveraging my expertise in Python, SQL, and various data analysis tools. I've led diverse projects in predictive modeling, data analysis, and machine learning, delivering solutions that drive measurable business outcomes. 
+        with st.container():
+            st.markdown("""
+                <style>
+                .metric-box {
+                    background-color: rgba(218,165,32,0.0);
+                    border: 2px solid Goldenrod;
+                    border-radius: 10px;
+                    padding: 20px;
+                    text-align: center;
+                    font-size: 24px;
+                    color: Goldenrod;
+                }
+                
+                h2 {
+                    text-align: center
+                }
+                </style>
+            """, unsafe_allow_html=True)
 
-            My strength lies in my ability to translate complex data into actionable insights, enabling informed decision-making. I thrive in dynamic environments, where I excel at navigating challenges and delivering results under pressure. 
+            # Using columns to organize metrics
+            col1, col2, col3, col4 = st.columns(4)
 
-            I'm committed to continuous learning and development, holding certifications in SQL Intermediate and Python Core from SoloLearn, alongside credentials in digital marketing and Google Analytics. My dedication to staying updated with industry trends underscores my commitment to excellence.
-            """
-        )
+            # Displaying the number of projects in the first column
+            with col1:
+                st.markdown(f"""
+                    <div class="metric-box">
+                        <h2>Total Projects</h2>
+                        <p>{count_projects()}</p>
+                    </div>
+                    
+                """, unsafe_allow_html=True)
+
+            # Placeholder for other metrics or information in col2 and col3
+            with col2:
+                st.markdown(f"""
+                    <div class="metric-box">
+                        <h2>Self Projects</h2>
+                        <p>{count_self()}</p>
+                    </div>
+                """, unsafe_allow_html=True)
+
+            with col3:
+                st.markdown(f"""
+                    <div class="metric-box">
+                        <h2>Freelancing Projects</h2>
+                        <p>{count_freelance()}</p>
+                    </div>
+                """, unsafe_allow_html=True)
+
+            with col4:
+                st.markdown(f"""
+                    <div class="metric-box">
+                        <h2>Other Projects</h2>
+                        <p>{other_project()}</p>
+                    </div>
+                """, unsafe_allow_html=True)
 
         # Skills
         st.markdown(
@@ -201,8 +335,6 @@ def home():
         with container:
             col1, col2, col3 = st.columns([2, 4, 2])
 
-            with col2:
-                st_lottie(home_lottie_url, height='50%', width='50%')
 
         # Get a list of all PNG files in the 'assets/logo' folder
         folder_path = 'assets/logo'
@@ -234,7 +366,7 @@ def home():
             )
 
 
-    elif selected == "Project":
+    elif 'selected' in locals() and selected == "Project":
         st.markdown(
             """
             <h1 style='color: Goldenrod;'>M<font color="white">y Projects 👨‍💻</font></h1>
@@ -243,11 +375,13 @@ def home():
         )
 
         with st.container():
+            project_counter += 1
             head_left, head_middle, head_right = st.columns([2, 1, 1])
             # Add the common header inside the container
             with head_left:
                 st.markdown("""
-                        <h3 style='text-align: left; background-color: rgba(218,165,32,0.1); border: 2px solid Goldenrod; border-radius: 10px; padding: 10px;'> 
+                        <h3 style='text-align: left; background-color: rgba(218,165,32,0.1); 
+                        border: 2px solid Goldenrod; border-radius: 10px; padding: 10px;'> 
                         Heroic AI
                         </h3>
                         <h4>Self Project</h4>
@@ -269,7 +403,9 @@ def home():
                 st.markdown("<h3>Summary</h3>", unsafe_allow_html=True)
                 st.markdown("""
                         - 	Developed an AI chatbot using Large Language Models
+                        
                         - 	Used **Groq API** to use these models to generate responses
+                        
                         -   Added **Chat with CSV** functionality using **PandasAI**
                             """
                             )
@@ -303,10 +439,11 @@ def home():
             # Add the common header inside the container
             with head_left:
                 st.markdown("""
+                        
                         <h3 style='text-align: left; background-color: rgba(218,165,32,0.1); border: 2px solid Goldenrod; border-radius: 10px; padding: 10px;'> 
                         Smart Attendance System
                         </h3>
-                        <h4>Self Project</h4>
+                        <h4>Freelancing Project</h4>
                         """, unsafe_allow_html=True)
 
             with head_middle:
@@ -328,10 +465,8 @@ def home():
                             """
                             )
                 st.markdown(
-                    """<h5><a href='https://github.com/Gaurav-Wankhede/Weather-Analysis.git'>GitHub</a>
-                    |
-                    <a href="https://app.powerbi.com/groups/3eb1e7fb-b5b4-495d-8aad-8e79b57424a7/reports/f111e4b9-6aea-41a0-9d37-309db01cf381/ReportSection2ba2795d61b5728b3624?experience=power-bi">Dashboard</a>
-                    </h5>
+                    """<h5><a href='https://github.com/Gaurav-Wankhede/Smart-Attendance-System/tree/main'>GitHub</a>
+                        </h5>
 
 
                     """,
@@ -386,7 +521,9 @@ def home():
                 st.markdown("<h3>Summary</h3>", unsafe_allow_html=True)
                 st.markdown("""
                         - 	**Power BI Dashboard:** Constructed a Power BI dashboard, augmenting decision-making efficiency by **30%**.
+                        
                         -	**Decision-Making:** Enabled informed decision-making, giving rise to **20%** improvement in resource allocation.
+                        
                         -	**Conclusion Efficacy:** Built a Power BI dashboard, boosting conclusion efficacy by **30%**.
                             """
                             )
@@ -441,7 +578,9 @@ def home():
                 st.markdown("<h3>Summary</h3>", unsafe_allow_html=True)
                 st.markdown("""
                         - **Fetched:** Fetched system data using Python
+                        
                         - **Stored:** Stored data in a SSMS database
+                        
                         - **Visualized:** Visualized Realtime data using PowerBI
                             """
                             )
@@ -490,7 +629,9 @@ def home():
                 st.markdown("<h3>Summary</h3>", unsafe_allow_html=True)
                 st.markdown("""
                         - **Search:** Searched "Laptops" on Amazon.com
+                        
                         - **Download:** Downloaded offline pages of Amazon
+                        
                         - **Scrape:** Scrapped data and stored it in a CSV file
                                 """
                             )
@@ -541,7 +682,9 @@ def home():
                 st.markdown("<h3>Summary</h3>", unsafe_allow_html=True)
                 st.markdown("""
                         - **ResNet-50 Model:** Improved experiment results, boosting the training accuracy of the **ResNet-50** model to **97%** to detect accidents.
+                        
                         - **Image Training:** Educated the system on **500-600** images of accidents, achieving zero **false positives** during training.
+                        
                         - **Safety Measures:** Fortified safety measures, encouraging to a **20%** reduction in emergency response time.
                         """)
                 st.markdown(
@@ -596,7 +739,9 @@ def home():
                 st.subheader("Summary")
                 st.markdown("""
                 - **Accuracy Rate**: Gained a **98% accuracy rate** in the face mask detection project.
+                
                 - **Precision and Productivity**: Educated the system using **3833 images** to pinpoint correct mask-wearing, boosting precision by **15%** and productivity by **25%**.
+                
                 - **Algorithm Fine-Tuning**: Accomplished a **15% boost** in face mask detection accuracy by fine-tuning existing algorithms and integrating real-time feedback mechanisms.
                 """)
                 st.markdown("""<h5><a href='https://github.com/Gaurav-Wankhede/Face-Mask_Detection.git'>GitHub</a> 
@@ -653,6 +798,15 @@ def home():
         
         - 🏠 Boisar, Palghar, Maharashtra, 🧡🤍💚️India 
     """)
+
+        st.subheader("Certificates")
+
+        imgcol1, imgcol2= st.columns(2)
+
+        with imgcol1:
+            st.image(["./assets/certificate/html.png", "./assets/certificate/core_python.png", "./assets/certificate/Google_Analytics.png"])
+        with imgcol2:
+            st.image(["./assets/certificate/sql.png", "./assets/certificate/sql_intermediate.png", "./assets/certificate/Digital_Marketing.png"])
 
 
     elif selected == "Contact":
